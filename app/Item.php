@@ -9,7 +9,7 @@ class Item extends Model
     protected $fillable = [
         'name',
         'medias',
-        'children',
+        'card_id',
     ];
 
     protected $casts = [

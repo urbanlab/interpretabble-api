@@ -13,11 +13,12 @@ use App\Item;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
 // Table state
 Route::get('state', 'TableController@state');
-Route::post('state/{$id}', 'TableController@getItem');
+Route::post('state/{id}', 'TableController@setCardId');
 
-// ITEM CRUD
+// Item CRUD
 Route::get('items', 'ItemController@listItems');
 Route::get('item/{id}', 'ItemController@listItem');
 Route::post('item/new', 'ItemController@createItem');

@@ -18,7 +18,8 @@ class CreateItems extends Migration
             $table->timestamps();
             $table->string('name');
             $table->json('medias');
-            $table->integer('children');
+            $table->integer('card_id');
+            //$table->integer('children');
         });
     }
 
