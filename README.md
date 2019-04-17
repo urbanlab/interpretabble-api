@@ -3,7 +3,6 @@ Laravel based api for Interpretabble
 
 ## Requirements :
 - Composer
-- Nodejs
 
 ## Setup :
 
