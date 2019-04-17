@@ -1,25 +1,37 @@
 # Interpretabble-api
+Laravel based api for Interpretabble
 
+## Requirements :
+- Composer
+- Nodejs
 
 ## Setup :
 
-To install the node_modules
-> npm install 
+After you've cloned this repo
 
-Then copy the example.env file and rename it to .env
+Update all the missing php dependencies with
+> composer update
 
-edit the .env 
-The api port (3000 by default)
-> API_PORT= 3000
+Copy the env.example file and rename it to .env
+And edit this file to fit your db settings
 
-The mongodb host
+> DB_CONNECTION=mysql
+> DB_HOST=127.0.0.1
+> DB_PORT=3306
+> DB_DATABASE=mydatabase
+> DB_USERNAME=myusername
+> DB_PASSWORD=mypassword
 
->MONGO_DB_HOST= 'mongodb://host/dbname'
+Migrate the db table structure with
+> php artisan migrate
 
-To install the livereloafing module type
-> npm install -g nodemon
+For development purpose you can use
+> php artisan serve 
 
-The start the server with :
-> npm start
+To serve your api
+
+For production purpose you should change your .htaccess (/public) 
+and your vhost to serve your api (on apache or nginx) 
+
 
 
