@@ -19,11 +19,13 @@ class ItemController extends Controller
         // gets the api absolute url to media
         // TODO create a service or middleware
         foreach($items as $item){
-            foreach($item->medias as $media){
-                array_push($media_url,asset('/medias').'/'.$media );
+            if(!$item->media == 'mediapath'){
+                foreach($item->medias as $media){
+                    array_push($media_url,asset('/medias').'/'.$media );
+                }
+                $item->medias = $media_url;
+                $media_url = array();
             }
-            $item->medias = $media_url;
-            $media_url = array();
         }
         return $items;
     }
@@ -48,29 +50,40 @@ class ItemController extends Controller
     public function createItem(Request $request)
     {
 
-        $media_path = array();
+        
 
         // Gets every element from the form-data and stores to db
         $item = Item::create([
             'name' => $request->input('name'),
             'medias' => 'media_path',
-            'card_id' => $request->input('card_id')
+            'card_id' => $request->input('card_id'),
+            //'card_picture' => 'media_path',
+            //'thematic_id' => 'thematic_id',
         ]);
-        // Gets any file trough the form-data  
         // TODO Check file size and mime type (png/jpeg < 2mb)
         // TODO Compress if image 
-        foreach($request->files as $file)
-        {
+        // TODO Check resolution on each use case
+        
+        $destinationPath = 'medias/'.$item->id;
+        // Move the card picture to directory of item
+        /*$cardPicture = $request->file('card_picture');
+        $cardPicture->move($destinationPath,$cardPicture->getClientOriginalName());
+        $card_picture_path = $item->id.'/'.$cardPicture->getClientOriginalName();*/
+
+
+        $media_path = array();
+        // For each defined zone move file to directory and add to $media_path Array
+        for ($i=1; $i < 5; $i++) { 
+            $file = $request->file('zone'.$i);
             array_push($media_path, $item->id.'/'.$file->getClientOriginalName());
-            
-            //Move Uploaded File
-            $destinationPath = 'medias/'.$item->id;
             $file->move($destinationPath,$file->getClientOriginalName());
         }
+       
         // Fetch and update item in db
         $updateItem = Item::find($item->id);
         $updateItem->update([
-            'medias' => $media_path
+            'medias' => $media_path,
+            //'card_picture' => $card_picture_path
         ]);
         $updateItem->save();
 

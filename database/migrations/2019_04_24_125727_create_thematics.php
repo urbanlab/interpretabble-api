@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateItems extends Migration
+class CreateThematics extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateItems extends Migration
      */
     public function up()
     {
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create('thematics', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
             $table->string('name');
-            $table->json('medias');
-            $table->integer('card_id');
-            $table->string('card_picture');
-            $table->integer('thematic_id')->unsigned();
+            $table->timestamps();
         });
     }
 
@@ -31,6 +27,6 @@ class CreateItems extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('items');
+        Schema::dropIfExists('thematics');
     }
 }

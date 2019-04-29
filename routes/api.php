@@ -25,3 +25,6 @@ Route::post('item/new', 'ItemController@createItem');
 Route::put('item/{id}', 'ItemController@updateItem');
 // TODO Change it to a delete request
 Route::get('item/delete/{id}', 'ItemController@deleteItem');
+
+// Thematics CRUD
+Route::get('thematics', 'ThematicController@listThemes');
