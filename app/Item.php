@@ -15,7 +15,7 @@ class Item extends Model
     ];
 
     protected $attributes = [
-        'card_picture' => 'null',
+        //'card_picture' => 'null',
         'thematic_id' => 0,
     ];
 
