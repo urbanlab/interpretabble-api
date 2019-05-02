@@ -10,12 +10,12 @@ class Item extends Model
         'name',
         'medias',
         'card_id',
-        //'card_picture',
+        'card_picture',
         'thematic_id'
     ];
 
     protected $attributes = [
-        //'card_picture' => 'null',
+        'card_picture' => 'null',
         'thematic_id' => 0,
     ];
 

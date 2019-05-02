@@ -22,7 +22,7 @@ Route::post('state/{id}', 'TableController@setCardId');
 Route::get('items', 'ItemController@listItems');
 Route::get('item/{id}', 'ItemController@listItem');
 Route::post('item/new', 'ItemController@createItem');
-Route::put('item/{id}', 'ItemController@updateItem');
+Route::post('item/{id}', 'ItemController@updateItem');
 // TODO Change it to a delete request
 Route::get('item/delete/{id}', 'ItemController@deleteItem');
 
